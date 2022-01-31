@@ -4,16 +4,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.udacity.asteroidradar.Asteroid
 import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.api.Network
-import com.udacity.asteroidradar.api.NetworkAsteroidContainer
-import com.udacity.asteroidradar.api.asDatabaseModel
-import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
+import com.udacity.asteroidradar.ImageOfTheDay
+import com.udacity.asteroidradar.api.*
 import com.udacity.asteroidradar.databse.AsteroidDatabase
 import com.udacity.asteroidradar.databse.asDomainModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import org.json.JSONObject
-import timber.log.Timber
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -44,6 +41,11 @@ class AsteroidRepository(private val database: AsteroidDatabase)  {
             val asteroids = parseAsteroidsJsonResult(JSONObject(asteroidJsonObj))
             database.asteroidDao.insertAll(*NetworkAsteroidContainer(asteroids).asDatabaseModel())
         }
+    }
+
+    suspend fun getImageOfDayUrl(): ImageOfTheDay {
+        val imageOfDayData = Network.asteroidService.getImageOfDayData().await()
+        return parseImageOfDayUrlFromData(JSONObject(imageOfDayData))
     }
 
 }

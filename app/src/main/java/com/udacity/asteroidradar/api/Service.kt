@@ -3,6 +3,7 @@ package com.udacity.asteroidradar.api
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
+import com.udacity.asteroidradar.Constants
 import kotlinx.coroutines.Deferred
 import org.json.JSONObject
 import retrofit2.Retrofit
@@ -13,14 +14,17 @@ import retrofit2.http.Query
 
 
 private const val API_KEY = "fZ8QfFoRGY73Sda2ZyxrCydaIf7AsRKAZEEjQgps"
-private const val BASE_URL = "https://api.nasa.gov/neo/rest/v1/"
-
 
 interface AsteroidService {
 
-    @GET("feed")
+    @GET("neo/rest/v1/feed")
     fun getAsteroids(
         @Query("start_date") statDate: String,
+        @Query("api_key") apiKey: String = API_KEY
+    ) : Deferred<String>
+
+    @GET("planetary/apod")
+    fun getImageOfDayData(
         @Query("api_key") apiKey: String = API_KEY
     ) : Deferred<String>
 }
@@ -32,7 +36,7 @@ interface AsteroidService {
 object Network {
     // Configure retrofit to parse JSON and use coroutines
     private val retrofit = Retrofit.Builder()
-        .baseUrl(BASE_URL)
+        .baseUrl(Constants.BASE_URL)
         .addConverterFactory(ScalarsConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
         .build()

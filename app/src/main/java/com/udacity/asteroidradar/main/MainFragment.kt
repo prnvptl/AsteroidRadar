@@ -5,7 +5,9 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.ImageOfTheDay
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import timber.log.Timber
@@ -22,9 +24,19 @@ class MainFragment : Fragment() {
         binding.lifecycleOwner = this
 
         binding.viewModel = viewModel
+
+        val adapter = MainAdapter(MainAdapter.OnClickListener {
+            // TODO: Navigate to asteroid detail
+            Timber.i("ASTEROID CLICKED! " + it.codename)
+        })
+
+        binding.asteroidRecycler.setHasFixedSize(true);
         viewModel.asteroids.observe(viewLifecycleOwner, Observer<List<Asteroid>> { asteroids ->
             Timber.i("MainFragment Asteroids %s", asteroids.size)
+            adapter.submitList(asteroids)
         })
+
+        binding.asteroidRecycler.adapter = adapter
 
         setHasOptionsMenu(true)
 
