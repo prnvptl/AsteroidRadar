@@ -1,0 +1,16 @@
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion
+
+*.iml
+
+## Directory-based project format:
+.idea/
+
+### Gradle template
+.gradle/
+build/
+
+# Gradle files
+/*/build/
+
+.gradle/6.8/executionHistory/executionHistory.bin

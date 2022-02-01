@@ -1,1 +1,9 @@
-/build
+# Android Studio
+*.iml
+.idea
+idea/workspace.xml
+.gradle
+build/
+.navigation
+captures/
+output.json 

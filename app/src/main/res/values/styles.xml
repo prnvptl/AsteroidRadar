@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Subtitle" parent="TextAppearance.Title" >
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 </resources>

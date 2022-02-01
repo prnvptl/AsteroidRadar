@@ -2,8 +2,8 @@ package com.udacity.asteroidradar.databse
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.udacity.asteroidradar.Asteroid
-import com.udacity.asteroidradar.Constants
+import com.udacity.asteroidradar.model.Asteroid
+import com.udacity.asteroidradar.util.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 
