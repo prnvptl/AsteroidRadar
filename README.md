@@ -1,5 +1,10 @@
 # Asteroid Radar
 
+## API Key Instructions
+
+This app will only work if you include your API key in `gradle.properties`.
+You will find the placeholder for the API key already there in the file
+
 ## About
 
 Asteroid Radar is an app to view the asteroids detected by NASA that pass near Earth, you can view all the detected asteroids in a period of time, their data (Size, velocity, distance to Earth) and if they are potentially hazardous.
