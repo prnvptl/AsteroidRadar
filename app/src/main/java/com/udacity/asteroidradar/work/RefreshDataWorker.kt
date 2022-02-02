@@ -18,7 +18,6 @@ class RefreshDataWorker(appContext: Context, params: WorkerParameters):
 
     /**
      * A coroutine-friendly method to do your work.
-     * TODO: Get database, Refresh asteroids with Asteroid Repository and return Result.success()
      */
     override suspend fun doWork(): Result {
         val database = getDatabase(applicationContext)
