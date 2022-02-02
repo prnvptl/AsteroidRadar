@@ -17,10 +17,21 @@ The application you will build will:
 - Be able to cache the asteroids data by using a worker, so it downloads and saves week asteroids in background when device is charging and wifi is enabled.
 - App works in multiple screen sizes and orientations, also it provides talk back and push button navigation.
 
+## Technical Details
+
+- MVVM (repository pattern) + ViewModel + Data Binding+ LiveData 
+- Room Database
+- RecyclerView
+- Retrofit
+- Kotlin Coroutines
+- WorkManager
+- Single activity 
+- Localized for multiple languages
+- Navigation component
 
 ## Built With
 
-To build this project you are going to use the NASA NeoWS (Near Earth Object Web Service) API, which you can find here.
+Uses the NASA NeoWS (Near Earth Object Web Service) API, which you can find here.
 https://api.nasa.gov/
 
 ### Screenshots
